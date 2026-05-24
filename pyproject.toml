@@ -1,7 +1,7 @@
 [project]
 name = "onboarding-data"
 version = "0.1.0"
-description = "Add your description here"
+description = "Onboarding weekly report generator"
 requires-python = ">=3.13"
 dependencies = [
     "openpyxl>=3.1.5",
@@ -9,3 +9,6 @@ dependencies = [
     "plotly>=6.7.0",
     "streamlit>=1.57.0",
 ]
+
+[tool.setuptools]
+py-modules = []
