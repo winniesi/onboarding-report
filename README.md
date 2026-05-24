@@ -12,6 +12,8 @@
 2. 运行：
 
 ```
+uv run python scripts/main.py
+# 或
 ./run.sh
 ```
 
@@ -38,6 +40,12 @@
 - **前4周均值**：本周之前的 28 天总量 ÷ 4
 - **月度趋势**：全部数据的按月聚合
 
-## 依赖
+## Web 版本（Streamlit）
 
-Python 3.9+，pandas / plotly / openpyxl（首次运行自动安装）
+在线上传 CSV 并查看报告：
+
+```
+uv run streamlit run app.py
+```
+
+部署在 Streamlit Community Cloud，也可本地运行。

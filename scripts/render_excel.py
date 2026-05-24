@@ -1,5 +1,6 @@
 """Render analysis results as an Excel workbook."""
 
+import io
 from typing import List, Optional
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
@@ -48,9 +49,8 @@ def _write_sheet(ws, headers: List[str], rows: List[list], title: Optional[str] 
         ws.column_dimensions[col[0].column_letter].width = min(max_len + 4, 25)
 
 
-def render_excel(result: dict, output_path: str):
+def _build_workbook(result: dict) -> Workbook:
     wb = Workbook()
-    # Remove default sheet
     wb.remove(wb.active)
 
     m = result['meta']
@@ -120,5 +120,19 @@ def render_excel(result: dict, output_path: str):
         ])
     _write_sheet(ws, headers, rows)
 
+    return wb
+
+
+def render_excel(result: dict, output_path: str):
+    wb = _build_workbook(result)
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     wb.save(output_path)
+
+
+def render_excel_bytes(result: dict) -> io.BytesIO:
+    """Render analysis results as an Excel workbook in memory."""
+    buf = io.BytesIO()
+    wb = _build_workbook(result)
+    wb.save(buf)
+    buf.seek(0)
+    return buf
