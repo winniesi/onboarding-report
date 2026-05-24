@@ -10,5 +10,5 @@ dependencies = [
     "streamlit>=1.57.0",
 ]
 
-[tool.setuptools]
-py-modules = []
+[tool.poetry]
+package-mode = false
