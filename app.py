@@ -19,12 +19,14 @@ from render_html import render_html
 def render_html_string(result: dict) -> str:
     """Render HTML report to a string for download."""
     import tempfile, os
-    with tempfile.NamedTemporaryFile(suffix='.html', delete=False, mode='w', encoding='utf-8') as f:
-        render_html(result, f.name)
-        f.seek(0)
-        html = f.read()
-    os.unlink(f.name)
-    return html
+    fd, path = tempfile.mkstemp(suffix='.html')
+    try:
+        os.close(fd)
+        render_html(result, path)
+        with open(path, 'r', encoding='utf-8') as f:
+            return f.read()
+    finally:
+        os.unlink(path)
 
 
 def strip_html(text):
