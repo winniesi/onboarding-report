@@ -76,19 +76,27 @@ def monthly_reg_chart(result):
 def monthly_rate_chart(result):
     m = result['monthly']
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=m['months'], y=m['deposit_rate'], name='充值率', mode='lines+markers'))
-    fig.add_trace(go.Scatter(x=m['months'], y=m['trade_rate'], name='交易率', mode='lines+markers'))
-    fig.add_trace(go.Scatter(x=m['months'], y=m['kyc1_rate'], name='KYC1率', mode='lines+markers'))
-    fig.update_layout(title='月度转化率', yaxis_tickformat='.1%')
+    fig.add_trace(go.Scatter(x=m['months'], y=m['deposit_rate'], name='充值率', mode='lines+markers', yaxis='y'))
+    fig.add_trace(go.Scatter(x=m['months'], y=m['trade_rate'], name='交易率', mode='lines+markers', yaxis='y2'))
+    fig.add_trace(go.Scatter(x=m['months'], y=m['kyc1_rate'], name='KYC1率', mode='lines+markers', yaxis='y'))
+    fig.update_layout(
+        title='月度转化率',
+        yaxis=dict(title='充值率 / KYC1率', tickformat='.1%'),
+        yaxis2=dict(title='交易率', tickformat='.1%', overlaying='y', side='right'),
+    )
     return fig
 
 
 def monthly_amount_chart(result):
     m = result['monthly']
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=m['months'], y=m['deposit_amount'], name='充值金额', mode='lines+markers'))
-    fig.add_trace(go.Scatter(x=m['months'], y=m['trade_amount'], name='交易金额', mode='lines+markers'))
-    fig.update_layout(title='月度金额')
+    fig.add_trace(go.Scatter(x=m['months'], y=m['deposit_amount'], name='充值金额', mode='lines+markers', yaxis='y'))
+    fig.add_trace(go.Scatter(x=m['months'], y=m['trade_amount'], name='交易金额', mode='lines+markers', yaxis='y2'))
+    fig.update_layout(
+        title='月度金额',
+        yaxis=dict(title='充值金额'),
+        yaxis2=dict(title='交易金额', overlaying='y', side='right'),
+    )
     return fig
 
 
