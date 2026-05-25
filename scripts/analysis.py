@@ -211,7 +211,7 @@ def _build_channel_ranking(tw: pd.DataFrame, pw: pd.DataFrame) -> dict:
 
 
 def _build_country_top10(tw: pd.DataFrame, pw: pd.DataFrame) -> List[dict]:
-    tw_ct = _aggregate(tw, ['country']).sort_values('reg', ascending=False).head(10)
+    tw_ct = _aggregate(tw, ['country']).sort_values('deposit_count', ascending=False).head(10)
     pw_ct = _aggregate(pw, ['country'])
     pw_dict = pw_ct.set_index('country').to_dict('index')
 
