@@ -6,3 +6,4 @@ output/
 *.csv
 uv.lock
 .python-version
+output/
