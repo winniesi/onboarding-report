@@ -88,8 +88,8 @@ def _build_workbook(result: dict) -> Workbook:
 
     # 5. Country top 10
     ws = wb.create_sheet('国家Top10')
-    headers = ['排名', '国家', '注册量', '充值率', '交易率', '人均充值', '人均交易', '充值率变化', '交易率变化']
-    rows = [[r['rank'], r['country'], r['reg'], r['deposit_rate'], r['trade_rate'],
+    headers = ['排名', '国家', '注册量', '充值人数', '充值率', '交易率', '人均充值', '人均交易', '充值率变化', '交易率变化']
+    rows = [[r['rank'], r['country'], r['reg'], r['deposit_count'], r['deposit_rate'], r['trade_rate'],
              r['avg_deposit'], r['avg_trade'], r['dep_change'], r['trade_change']] for r in result['countries']]
     _write_sheet(ws, headers, rows)
 

@@ -225,6 +225,7 @@ def _build_country_top10(tw: pd.DataFrame, pw: pd.DataFrame) -> List[dict]:
             'rank': len(rows) + 1,
             'country': country,
             'reg': int(row['reg']),
+            'deposit_count': int(row['deposit_count']),
             'deposit_rate': _pct(row['deposit_rate']),
             'trade_rate': _pct(row['trade_rate']),
             'avg_deposit': f'{row["avg_deposit"]:.2f}',

@@ -97,10 +97,10 @@ def render_html(result: dict, output_path: str):
     # 5. Country top 10
     ct_rows = []
     for r in result['countries']:
-        ct_rows.append([str(r['rank']), r['country'], str(r['reg']), r['deposit_rate'],
+        ct_rows.append([str(r['rank']), r['country'], str(r['reg']), str(r['deposit_count']), r['deposit_rate'],
                         r['trade_rate'], r['avg_deposit'], r['avg_trade'], r['dep_change'], r['trade_change']])
     add('<h2>5. 国家 Top 10</h2>',
-        _table_html(['排名', '国家', '注册量', '充值率', '交易率', '人均充值', '人均交易', '充值率变化', '交易率变化'], ct_rows))
+        _table_html(['排名', '国家', '注册量', '充值人数', '充值率', '交易率', '人均充值', '人均交易', '充值率变化', '交易率变化'], ct_rows))
 
     # 6. Wool analysis
     wool = result['wool']
