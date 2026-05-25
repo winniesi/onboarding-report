@@ -56,7 +56,7 @@ def render_html(result: dict, output_path: str):
     tw_vals = [r['tw_raw'] for r in result['funnel'] if r['metric'] in ('注册人数', 'KYC1 人数', 'KYC2 人数', '充值人数', '交易人数')]
     pw_vals = [r['pw_raw'] for r in result['funnel'] if r['metric'] in ('注册人数', 'KYC1 人数', 'KYC2 人数', '充值人数', '交易人数')]
     fig.add_trace(go.Bar(name='本周', x=labels, y=tw_vals))
-    fig.add_trace(go.Bar(name='前4周均值', x=labels, y=[v / 4 for v in pw_vals]))
+    fig.add_trace(go.Bar(name='前4周均值', x=labels, y=pw_vals))
     fig.update_layout(barmode='group', title='漏斗人数对比', showlegend=True)
     add('', _chart_div('funnel_chart'), _make_chart(fig, 'funnel_chart'))
 

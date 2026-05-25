@@ -49,7 +49,7 @@ def funnel_chart(result):
                if r['metric'] in ('注册人数', 'KYC1 人数', 'KYC2 人数', '充值人数', '交易人数')]
     fig = go.Figure()
     fig.add_trace(go.Bar(name='本周', x=labels, y=tw_vals))
-    fig.add_trace(go.Bar(name='前4周均值', x=labels, y=[v / 4 for v in pw_vals]))
+    fig.add_trace(go.Bar(name='前4周均值', x=labels, y=pw_vals))
     fig.update_layout(barmode='group', title='漏斗人数对比', showlegend=True)
     return fig
 
