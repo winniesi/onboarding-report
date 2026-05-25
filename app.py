@@ -240,7 +240,7 @@ st.header("5. 国家 Top 10")
 ct_data = []
 for r in result['countries']:
     ct_data.append(clean_row({
-        '排名': r['rank'], '国家': r['country'], '注册量': r['reg'], '充值人数': r['deposit_count'],
+        '排名': r['rank'], '国家': r['country'], '注册量': r['reg'], '充值人数': r.get('deposit_count', '-'),
         '充值率': r['deposit_rate'], '交易率': r['trade_rate'],
         '人均充值': r['avg_deposit'], '人均交易': r['avg_trade'],
         '充值率变化': r['dep_change'], '交易率变化': r['trade_change'],
